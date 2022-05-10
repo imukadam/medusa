@@ -37,14 +37,14 @@ func (client *Client) SecretWrite(path string, data map[string]interface{}) {
 
 		_, err := client.vc.Logical().WriteBytes(finalPath, []byte(jsonString))
 		if err != nil {
-			fmt.Printf("Error while writing secret. %s\n", err)
+			fmt.Printf("Error while writing secret. %s. Path: %s\n", err, path)
 		} else {
 			fmt.Printf("Secret successfully written to Vault [%s] using path [%s]\n", client.addr, path)
 		}
 	} else {
 		_, err := client.vc.Logical().Write(finalPath, finalData)
 		if err != nil {
-			fmt.Printf("Error while writing secret. %s\n", err)
+			fmt.Printf("Error while writing secret. %s. Path: %s\n", err, path)
 		} else {
 			fmt.Printf("Secret successfully written to Vault [%s] using path [%s]\n", client.addr, path)
 		}
